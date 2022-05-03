@@ -18,14 +18,14 @@ class UserInfoViewController: UIViewController {
     
     private let secondNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Age"
+        label.text = "Second name"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let ageLabel: UILabel = {
         let label = UILabel()
-        label.text = "Second name"
+        label.text = "Age"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -58,6 +58,7 @@ class UserInfoViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
+        setupModel()
         setupConstraints()
     }
     
@@ -76,6 +77,21 @@ class UserInfoViewController: UIViewController {
                                 distribution: .fillProportionally)
         
         view.addSubview(stackView)
+    }
+    
+    private func setupModel() {
+        guard let activeUser = DataBase.shared.activeUser else { return }
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let dateString = dateFormatter.string(from: activeUser.age)
+
+        firstNameLabel.text = activeUser.firstName
+//        secondNameLabel.text = activeUser.secondName
+        ageLabel.text = dateString
+        phoneLabel.text = activeUser.phone
+        emailLabel.text = activeUser.email
+        passwordLabel.text = activeUser.password
     }
 }
 

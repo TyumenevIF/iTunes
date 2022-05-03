@@ -44,14 +44,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    private let secondNameTextField: UITextField = {
+    private let lastNameTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
-        textField.placeholder = "Second name"
+        textField.placeholder = "Last name"
         return textField
     }()
     
-    private let secondNameValidLabel: UILabel = {
+    private let lastNameValidLabel: UILabel = {
         let label = UILabel()
         label.text = "Required field"
         label.font = UIFont.systemFont(ofSize: 14)
@@ -156,8 +156,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         elementsStackView = UIStackView(arrangedSubviews: [firstNameTextField,
                                                            firstNameValidLabel,
-                                                           secondNameTextField,
-                                                           secondNameValidLabel,
+                                                           lastNameTextField,
+                                                           lastNameValidLabel,
                                                            datePicker,
                                                            ageValidLabel,
                                                            phoneTextField,
@@ -176,7 +176,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     private func setupDelegate() {
         firstNameTextField.delegate = self
-        secondNameTextField.delegate = self
+        lastNameTextField.delegate = self
         phoneTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -193,7 +193,29 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc private func signUpButtonTapped() {
-        ageIsValid()
+        let firstNameText = firstNameTextField.text ?? ""
+        let lastNameText = lastNameTextField.text ?? ""
+        let phoneText = phoneTextField.text ?? ""
+        let emailText = emailTextField.text ?? ""
+        let passwordText = passwordTextField.text ?? ""
+        
+        if firstNameText.isValid(validType: nameValidType) &&
+            lastNameText.isValid(validType: nameValidType) &&
+            ageIsValid() == true &&
+            phoneText.isValid(validType: phoneValidType) &&
+            emailText.isValid(validType: emailValidType) &&
+            passwordText.isValid(validType: passwordValidType) {
+            
+            DataBase.shared.saveUser(firstName: firstNameText,
+                                     lastName: lastNameText,
+                                     age: datePicker.date,
+                                     phone: phoneText,
+                                     email: emailText,
+                                     password: passwordText)
+            alert(title: "Good!", message: "Registration complete")
+        } else {
+            alert(title: "Error!", message: "All fields are filled in, and you must be over 18.")
+        }
     }
     
     private func setTextField(textField: UITextField,
@@ -286,11 +308,11 @@ extension SignUpViewController {
                          string: string,
                          range: range)
             
-        case secondNameTextField:
-            setTextField(textField: secondNameTextField,
-                         label: secondNameValidLabel,
+        case lastNameTextField:
+            setTextField(textField: lastNameTextField,
+                         label: lastNameValidLabel,
                          validType: nameValidType,
-                         validMessage: "Second name is valid",
+                         validMessage: "Last name is valid",
                          wrongMessage: "Wrong character",
                          string: string,
                          range: range)
@@ -332,7 +354,7 @@ extension SignUpViewController {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         firstNameTextField.resignFirstResponder()
-        secondNameTextField.resignFirstResponder()
+        lastNameTextField.resignFirstResponder()
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         return true
