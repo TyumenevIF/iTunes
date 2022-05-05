@@ -136,7 +136,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
         setupConstraints()
         setupDelegate()
@@ -150,10 +149,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     private func setupViews() {
         title = "SignUp"
-        
         view.addSubview(scrollView)
         scrollView.addSubview(backgroundView)
-        
         elementsStackView = UIStackView(arrangedSubviews: [firstNameTextField,
                                                            firstNameValidLabel,
                                                            lastNameTextField,
@@ -251,12 +248,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let calendar = NSCalendar.current
         let currentDay = Date()
         let birthDay = datePicker.date
-        
         let age = calendar.dateComponents([.year], from: birthDay, to: currentDay)
         let ageYear = age.year
-        
         guard let ageUser = ageYear else { return  false }
-        
         return ( ageUser < 18 ? false : true)
     }
 }
@@ -265,7 +259,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 extension SignUpViewController {
     
     private func registerKeyboardNotification() {
-        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification,
@@ -292,12 +285,10 @@ extension SignUpViewController {
     }
 }
 
-
 // MARK: - UITextFieldDelegate
 extension SignUpViewController {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         switch textField {
         case firstNameTextField:
             setTextField(textField: firstNameTextField,
@@ -348,7 +339,6 @@ extension SignUpViewController {
         default:
             break
         }
-        
         return false
     }
     
@@ -364,8 +354,7 @@ extension SignUpViewController {
 // MARK: - SetupConstraints
 extension SignUpViewController {
     
-    private func setupConstraints() {
-        
+    private func setupConstraints() {        
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),

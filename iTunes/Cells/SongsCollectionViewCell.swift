@@ -9,15 +9,15 @@ import UIKit
 
 class SongsCollectionViewCell: UICollectionViewCell {
     
-    private let nameSongLabel: UILabel = {
+    let nameSongLabel: UILabel = {
         let label = UILabel()
+        label.text = "Song name"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+        super.init(frame: frame)        
         setupConstraints()
     }
     
@@ -26,7 +26,6 @@ class SongsCollectionViewCell: UICollectionViewCell {
     }
     
     func setupConstraints() {
-        
         self.addSubview(nameSongLabel)
         
         NSLayoutConstraint.activate([
@@ -36,5 +35,4 @@ class SongsCollectionViewCell: UICollectionViewCell {
             nameSongLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
         ])
     }
-    
 }

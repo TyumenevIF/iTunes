@@ -56,7 +56,6 @@ class UserInfoViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
         setupModel()
         setupConstraints()
@@ -65,7 +64,6 @@ class UserInfoViewController: UIViewController {
     private func setupViews() {
         title = "Active user"
         view.backgroundColor = .white
-        
         stackView = UIStackView(arrangedSubviews: [firstNameLabel,
                                                    lastNameLabel,
                                                    ageLabel,
@@ -98,8 +96,7 @@ class UserInfoViewController: UIViewController {
 // MARK: - SetupConstraints
 extension UserInfoViewController {
    
-    private func setupConstraints() {
-        
+    private func setupConstraints() {        
         NSLayoutConstraint.activate([            
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),

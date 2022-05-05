@@ -18,14 +18,12 @@ class AlbumsViewController: UIViewController {
     }()
     
     private let searchController = UISearchController(searchResultsController: nil)
-    
     var albums = [Album]()
     var timer: Timer?
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupViews()
         setupDelegate()
         setupConstraints()
@@ -41,14 +39,12 @@ class AlbumsViewController: UIViewController {
     private func setupDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
-        
         searchController.searchBar.delegate = self
     }
     
     private func setupNavigationBar() {
         navigationItem.title = "Albums"
         navigationItem.searchController = searchController
-        
         let userInfoButton = createCustomButton(selector: #selector(userInfoButtonTapped))
         navigationItem.rightBarButtonItem = userInfoButton
     }
@@ -68,17 +64,13 @@ class AlbumsViewController: UIViewController {
         let urlString = "https://itunes.apple.com/search?term=\(albumName)&entity=album&attribute=albumTerm"
 
         NetworkDataFetch.shared.fetchAlbum(urlString: urlString) { [weak self] (albumModel, error) in
-
             if error == nil {
-
                 guard let albumModel = albumModel else { return }
-
                 if albumModel.results != [] {
                     let sortedAlbums = albumModel.results.sorted { firstItem, secondItem in
                         return firstItem.collectionName.compare(secondItem.collectionName) == ComparisonResult.orderedAscending
                     }
                     self?.albums = sortedAlbums
-                    print(self?.albums as Any)
                     self?.tableView.reloadData()
                 } else {
                     self?.alert(title: "Error", message: "Album not found. Add some words.")
@@ -125,7 +117,6 @@ extension AlbumsViewController: UITableViewDelegate {
 extension AlbumsViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         let text = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         if text != "" {
             timer?.invalidate()
@@ -139,8 +130,7 @@ extension AlbumsViewController: UISearchBarDelegate {
 // MARK: - SetupConstraints {
 extension AlbumsViewController {
     
-    private func setupConstraints() {
-        
+    private func setupConstraints() {        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),

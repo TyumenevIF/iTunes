@@ -72,7 +72,6 @@ class AuthViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
         setupDelegate()
         setupConstraints()
@@ -84,8 +83,7 @@ class AuthViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.backgroundColor = .white
-        
+        view.backgroundColor = .white        
         textFieldsStackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField],
                                           axis: .vertical,
                                           spacing: 10,
@@ -109,7 +107,6 @@ class AuthViewController: UIViewController {
     }
         
     @objc private func signInButtonTapped() {
-
         let mail = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         let user = findUserDataBase(mail: mail)
@@ -133,8 +130,6 @@ class AuthViewController: UIViewController {
     
     private func findUserDataBase(mail: String) -> User? {
         let dataBase = DataBase.shared.users
-        print(dataBase)
-
         for user in dataBase {
             if user.email == mail {
                 return user
@@ -158,11 +153,11 @@ extension AuthViewController: UITextFieldDelegate {
         return true
     }
 }
+
 // MARK: - Keyboard notification
 extension AuthViewController {
     
     private func registerKeyboardNotification() {
-        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification,
@@ -193,7 +188,6 @@ extension AuthViewController {
 extension AuthViewController {
    
     private func setupConstraints() {
-        
         NSLayoutConstraint.activate([            
             scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),

@@ -49,8 +49,7 @@ class AlbumsTableViewCell: UITableViewCell {
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        super.init(style: style, reuseIdentifier: reuseIdentifier)        
         setupViews()
         setupConstraints()
     }
@@ -61,11 +60,9 @@ class AlbumsTableViewCell: UITableViewCell {
     
     private func setupViews() {
         self.backgroundColor = .clear
-        self.selectionStyle = .none
-        
+        self.selectionStyle = .none        
         self.addSubview(albumLogo)
         self.addSubview(albumNameLabel)
-        
         stackView = UIStackView(arrangedSubviews: [artistNameLabel, trackCountLabel],
                                 axis: .horizontal,
                                 spacing: 10,
@@ -74,7 +71,6 @@ class AlbumsTableViewCell: UITableViewCell {
     }
     
     func configureAlbumCell(album: Album) {
-        
         if let urlString = album.artworkUrl100 {
             NetworkRequest.shared.requestData(urlString: urlString) { [weak self] result in
                 switch result {
@@ -89,15 +85,13 @@ class AlbumsTableViewCell: UITableViewCell {
         } else {
             albumLogo.image = nil
         }
-        
-        
+                
         albumNameLabel.text = album.collectionName
         artistNameLabel.text = album.artistName
         trackCountLabel.text = "\(album.trackCount) tracks"
     }
     
     private func setupConstraints() {
-        
         NSLayoutConstraint.activate([            
             albumLogo.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             albumLogo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
