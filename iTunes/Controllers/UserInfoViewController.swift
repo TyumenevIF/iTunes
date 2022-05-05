@@ -16,9 +16,9 @@ class UserInfoViewController: UIViewController {
         return label
     }()
     
-    private let secondNameLabel: UILabel = {
+    private let lastNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Second name"
+        label.text = "Last name"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -67,7 +67,7 @@ class UserInfoViewController: UIViewController {
         view.backgroundColor = .white
         
         stackView = UIStackView(arrangedSubviews: [firstNameLabel,
-                                                   secondNameLabel,
+                                                   lastNameLabel,
                                                    ageLabel,
                                                    phoneLabel,
                                                    emailLabel,
@@ -87,7 +87,7 @@ class UserInfoViewController: UIViewController {
         let dateString = dateFormatter.string(from: activeUser.age)
 
         firstNameLabel.text = activeUser.firstName
-//        secondNameLabel.text = activeUser.secondName
+        lastNameLabel.text = activeUser.lastName
         ageLabel.text = dateString
         phoneLabel.text = activeUser.phone
         emailLabel.text = activeUser.email

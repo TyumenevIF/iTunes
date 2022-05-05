@@ -10,6 +10,9 @@
 		431C60582821294100B4D537 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431C60572821294100B4D537 /* String + Extension.swift */; };
 		431C605B282165E700B4D537 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431C605A282165E700B4D537 /* UserDefaultsManager.swift */; };
 		431C605E282166C900B4D537 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431C605D282166C900B4D537 /* UserModel.swift */; };
+		43553A4B28227D0100F68CB2 /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43553A4A28227D0100F68CB2 /* AlbumModel.swift */; };
+		43553A4E28227F2A00F68CB2 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43553A4D28227F2A00F68CB2 /* NetworkRequest.swift */; };
+		43553A502822845400F68CB2 /* NetworkDataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43553A4F2822845400F68CB2 /* NetworkDataFetch.swift */; };
 		436D7A3E281FD1A3006DC392 /* DetailAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D7A3D281FD1A3006DC392 /* DetailAlbumViewController.swift */; };
 		436D7A40281FD347006DC392 /* SongsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D7A3F281FD347006DC392 /* SongsCollectionViewCell.swift */; };
 		436D7A42281FDC74006DC392 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D7A41281FDC74006DC392 /* UserInfoViewController.swift */; };
@@ -29,10 +32,13 @@
 		431C60572821294100B4D537 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		431C605A282165E700B4D537 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		431C605D282166C900B4D537 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		43553A4A28227D0100F68CB2 /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
+		43553A4D28227F2A00F68CB2 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		43553A4F2822845400F68CB2 /* NetworkDataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetch.swift; sourceTree = "<group>"; };
 		436D7A3D281FD1A3006DC392 /* DetailAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAlbumViewController.swift; sourceTree = "<group>"; };
 		436D7A3F281FD347006DC392 /* SongsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsCollectionViewCell.swift; sourceTree = "<group>"; };
 		436D7A41281FDC74006DC392 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
-		43E5D489281ECBCD00284E2F /* iTunes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		43E5D489281ECBCD00284E2F /* iTunes_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunes_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43E5D48C281ECBCD00284E2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43E5D48E281ECBCD00284E2F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		43E5D495281ECBD000284E2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -69,8 +75,18 @@
 			isa = PBXGroup;
 			children = (
 				431C605D282166C900B4D537 /* UserModel.swift */,
+				43553A4A28227D0100F68CB2 /* AlbumModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		43553A4C28227EE800F68CB2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				43553A4D28227F2A00F68CB2 /* NetworkRequest.swift */,
+				43553A4F2822845400F68CB2 /* NetworkDataFetch.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		436D7A43281FEE4C006DC392 /* App */ = {
@@ -110,7 +126,7 @@
 		43E5D48A281ECBCD00284E2F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				43E5D489281ECBCD00284E2F /* iTunes.app */,
+				43E5D489281ECBCD00284E2F /* iTunes_test.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,6 +142,7 @@
 				43E5D4AD281F11CF00284E2F /* Controllers */,
 				43E5D4A6281EF4AC00284E2F /* Extensions */,
 				431C6059282165B500B4D537 /* Services */,
+				43553A4C28227EE800F68CB2 /* Network */,
 			);
 			path = iTunes;
 			sourceTree = "<group>";
@@ -164,9 +181,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		43E5D488281ECBCC00284E2F /* iTunes */ = {
+		43E5D488281ECBCC00284E2F /* iTunes_test */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 43E5D49D281ECBD000284E2F /* Build configuration list for PBXNativeTarget "iTunes" */;
+			buildConfigurationList = 43E5D49D281ECBD000284E2F /* Build configuration list for PBXNativeTarget "iTunes_test" */;
 			buildPhases = (
 				43E5D485281ECBCC00284E2F /* Sources */,
 				43E5D486281ECBCC00284E2F /* Frameworks */,
@@ -176,9 +193,9 @@
 			);
 			dependencies = (
 			);
-			name = iTunes;
+			name = iTunes_test;
 			productName = iTunes;
-			productReference = 43E5D489281ECBCD00284E2F /* iTunes.app */;
+			productReference = 43E5D489281ECBCD00284E2F /* iTunes_test.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -196,7 +213,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 43E5D484281ECBCC00284E2F /* Build configuration list for PBXProject "iTunes" */;
+			buildConfigurationList = 43E5D484281ECBCC00284E2F /* Build configuration list for PBXProject "iTunes_test" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -209,7 +226,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				43E5D488281ECBCC00284E2F /* iTunes */,
+				43E5D488281ECBCC00284E2F /* iTunes_test */,
 			);
 		};
 /* End PBXProject section */
@@ -232,6 +249,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				43E5D4A5281ED71A00284E2F /* SignUpViewController.swift in Sources */,
+				43553A4B28227D0100F68CB2 /* AlbumModel.swift in Sources */,
+				43553A4E28227F2A00F68CB2 /* NetworkRequest.swift in Sources */,
 				436D7A42281FDC74006DC392 /* UserInfoViewController.swift in Sources */,
 				431C60582821294100B4D537 /* String + Extension.swift in Sources */,
 				431C605B282165E700B4D537 /* UserDefaultsManager.swift in Sources */,
@@ -243,6 +262,7 @@
 				43E5D4AF281F121400284E2F /* AlbumsTableViewCell.swift in Sources */,
 				43E5D48D281ECBCD00284E2F /* AppDelegate.swift in Sources */,
 				43E5D48F281ECBCD00284E2F /* SceneDelegate.swift in Sources */,
+				43553A502822845400F68CB2 /* NetworkDataFetch.swift in Sources */,
 				43E5D4A3281ED6BC00284E2F /* AlbumsViewController.swift in Sources */,
 				436D7A40281FD347006DC392 /* SongsCollectionViewCell.swift in Sources */,
 			);
@@ -435,7 +455,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		43E5D484281ECBCC00284E2F /* Build configuration list for PBXProject "iTunes" */ = {
+		43E5D484281ECBCC00284E2F /* Build configuration list for PBXProject "iTunes_test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43E5D49B281ECBD000284E2F /* Debug */,
@@ -444,7 +464,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		43E5D49D281ECBD000284E2F /* Build configuration list for PBXNativeTarget "iTunes" */ = {
+		43E5D49D281ECBD000284E2F /* Build configuration list for PBXNativeTarget "iTunes_test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43E5D49E281ECBD000284E2F /* Debug */,

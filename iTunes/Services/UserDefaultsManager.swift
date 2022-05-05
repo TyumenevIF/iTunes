@@ -44,7 +44,7 @@ class DataBase {
                   password: String) {
         
         let user = User(firstName: firstName,
-//                        lastName: lastName,
+                        lastName: lastName,
                         age: age,
                         phone: phone,
                         email: email,
@@ -61,7 +61,6 @@ class DataBase {
             }
         }
         set {
-            
             if let data = try? PropertyListEncoder().encode(newValue) {
                 defaults.set(data, forKey: activeUserKey)
             }

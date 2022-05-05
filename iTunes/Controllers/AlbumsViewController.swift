@@ -11,13 +11,16 @@ class AlbumsViewController: UIViewController {
     
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .black
+        tableView.backgroundColor = .white
         tableView.register(AlbumsTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
     private let searchController = UISearchController(searchResultsController: nil)
+    
+    var albums = [Album]()
+    var timer: Timer?
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -25,6 +28,7 @@ class AlbumsViewController: UIViewController {
 
         setupViews()
         setupDelegate()
+        setupConstraints()
         setupNavigationBar()
         setupSearchController()
     }
@@ -58,17 +62,45 @@ class AlbumsViewController: UIViewController {
         let userInfoViewController = UserInfoViewController()
         navigationController?.pushViewController(userInfoViewController, animated: true)
     }
+    
+    private func fetchAlbums(albumName: String) {
+
+        let urlString = "https://itunes.apple.com/search?term=\(albumName)&entity=album&attribute=albumTerm"
+
+        NetworkDataFetch.shared.fetchAlbum(urlString: urlString) { [weak self] (albumModel, error) in
+
+            if error == nil {
+
+                guard let albumModel = albumModel else { return }
+
+                if albumModel.results != [] {
+                    let sortedAlbums = albumModel.results.sorted { firstItem, secondItem in
+                        return firstItem.collectionName.compare(secondItem.collectionName) == ComparisonResult.orderedAscending
+                    }
+                    self?.albums = sortedAlbums
+                    print(self?.albums as Any)
+                    self?.tableView.reloadData()
+                } else {
+                    self?.alert(title: "Error", message: "Album not found. Add some words.")
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
 extension AlbumsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        albums.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AlbumsTableViewCell
+        let album = albums[indexPath.row]
+        cell.configureAlbumCell(album: album)
         return cell
     }
 }
@@ -82,6 +114,9 @@ extension AlbumsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailAlbumViewController = DetailAlbumViewController()
+        let album = albums[indexPath.row]
+        detailAlbumViewController.album = album
+        detailAlbumViewController.title = album.artistName
         navigationController?.pushViewController(detailAlbumViewController, animated: true)
     }
 }
@@ -90,14 +125,21 @@ extension AlbumsViewController: UITableViewDelegate {
 extension AlbumsViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        
+        let text = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        if text != "" {
+            timer?.invalidate()
+            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _Arg in
+                self?.fetchAlbums(albumName: text!)
+            })
+        }
     }
 }
 
 // MARK: - SetupConstraints {
 extension AlbumsViewController {
     
-    private func setConstraints() {
+    private func setupConstraints() {
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),

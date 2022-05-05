@@ -58,6 +58,8 @@ class DetailAlbumViewController: UIViewController {
     
     var stackView = UIStackView()
     
+    var album: Album?
+    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +88,15 @@ class DetailAlbumViewController: UIViewController {
     private func setupDelegate() {
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    private func setupModel() {
+        
+        guard let album = album else { return }
+        
+        albumNameLabel.text = album.collectionName
+        artistNameLabel.text = album.artistName
+        trackCountLabel.text = "\(album.trackCount) tracks"
     }
 }
 

@@ -126,6 +126,9 @@ class AuthViewController: UIViewController {
         } else {
             alert(title: "Error!", message: "Incorrect password")
         }
+        let navVC = UINavigationController(rootViewController: AlbumsViewController())
+        navVC.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true)
     }
     
     private func findUserDataBase(mail: String) -> User? {
