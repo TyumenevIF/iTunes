@@ -120,7 +120,7 @@ extension AlbumsViewController: UISearchBarDelegate {
         let text = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         if text != "" {
             timer?.invalidate()
-            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _Arg in
+            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _ in
                 self?.fetchAlbums(albumName: text!)
             })
         }

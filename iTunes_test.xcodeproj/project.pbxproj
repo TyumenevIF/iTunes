@@ -27,9 +27,12 @@
 		43E5D4A9281EF4E500284E2F /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D4A8281EF4E500284E2F /* UIStackView + Extension.swift */; };
 		43E5D4AB281F0C7D00284E2F /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D4AA281F0C7D00284E2F /* UIViewController + Extension.swift */; };
 		43E5D4AF281F121400284E2F /* AlbumsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D4AE281F121400284E2F /* AlbumsTableViewCell.swift */; };
+		9B77062C7D09144C919EA053 /* Pods_iTunes_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 135DE2BB12C55926D9B5D665 /* Pods_iTunes_test.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		135DE2BB12C55926D9B5D665 /* Pods_iTunes_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunes_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C36CD445EF7537EB2A222ED /* Pods-iTunes_test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunes_test.release.xcconfig"; path = "Target Support Files/Pods-iTunes_test/Pods-iTunes_test.release.xcconfig"; sourceTree = "<group>"; };
 		431C60572821294100B4D537 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		431C605A282165E700B4D537 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		431C605D282166C900B4D537 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -52,6 +55,7 @@
 		43E5D4A8281EF4E500284E2F /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		43E5D4AA281F0C7D00284E2F /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		43E5D4AE281F121400284E2F /* AlbumsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewCell.swift; sourceTree = "<group>"; };
+		FCD3F2C832B2024A9DE3D954 /* Pods-iTunes_test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunes_test.debug.xcconfig"; path = "Target Support Files/Pods-iTunes_test/Pods-iTunes_test.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +63,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B77062C7D09144C919EA053 /* Pods_iTunes_test.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33E9695A2FEA8F1165E7BCD9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FCD3F2C832B2024A9DE3D954 /* Pods-iTunes_test.debug.xcconfig */,
+				2C36CD445EF7537EB2A222ED /* Pods-iTunes_test.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		431C6059282165B500B4D537 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +137,8 @@
 			children = (
 				43E5D48B281ECBCD00284E2F /* iTunes */,
 				43E5D48A281ECBCD00284E2F /* Products */,
+				33E9695A2FEA8F1165E7BCD9 /* Pods */,
+				9B3DCEF51CEA60F30558F767 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,6 +197,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		9B3DCEF51CEA60F30558F767 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				135DE2BB12C55926D9B5D665 /* Pods_iTunes_test.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -188,9 +212,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43E5D49D281ECBD000284E2F /* Build configuration list for PBXNativeTarget "iTunes_test" */;
 			buildPhases = (
+				61208DC8ABBE0FF86C04402D /* [CP] Check Pods Manifest.lock */,
 				43E5D485281ECBCC00284E2F /* Sources */,
 				43E5D486281ECBCC00284E2F /* Frameworks */,
 				43E5D487281ECBCC00284E2F /* Resources */,
+				4313B17F2827E9C800ADED4A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -245,6 +271,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4313B17F2827E9C800ADED4A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"error: SwiftLint does not exist, download it from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		61208DC8ABBE0FF86C04402D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iTunes_test-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		43E5D485281ECBCC00284E2F /* Sources */ = {
@@ -404,6 +472,7 @@
 		};
 		43E5D49E281ECBD000284E2F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCD3F2C832B2024A9DE3D954 /* Pods-iTunes_test.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -431,6 +500,7 @@
 		};
 		43E5D49F281ECBD000284E2F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C36CD445EF7537EB2A222ED /* Pods-iTunes_test.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

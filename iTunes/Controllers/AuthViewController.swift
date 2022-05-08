@@ -44,7 +44,7 @@ class AuthViewController: UIViewController {
         return textField
     }()
     
-    private let signInButton: UIButton = {
+    private lazy var signInButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .systemBlue
         button.setTitle("Sign in", for: .normal)
@@ -55,7 +55,7 @@ class AuthViewController: UIViewController {
         return button
     }()
     
-    private let signUpButton: UIButton = {
+    private lazy var signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .black
         button.setTitle("Sign up", for: .normal)
@@ -130,10 +130,8 @@ class AuthViewController: UIViewController {
     
     private func findUserDataBase(mail: String) -> User? {
         let dataBase = DataBase.shared.users
-        for user in dataBase {
-            if user.email == mail {
-                return user
-            }
+        for user in dataBase where user.email == mail {
+            return user
         }
         return nil
     }

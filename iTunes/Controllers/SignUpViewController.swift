@@ -114,7 +114,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    private let signUpButton: UIButton = {
+    private lazy var signUpButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .black
         button.setTitle("Sign up", for: .normal)
@@ -326,7 +326,6 @@ extension SignUpViewController {
                          string: string,
                          range: range)
             
-            
         case passwordTextField:
             setTextField(textField: passwordTextField,
                          label: passwordValidLabel,
@@ -382,4 +381,3 @@ extension SignUpViewController {
         ])
     }
 }
-
