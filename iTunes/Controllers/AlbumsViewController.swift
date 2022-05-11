@@ -9,12 +9,8 @@ import UIKit
 
 class AlbumsViewController: UIViewController {
     
-    private let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.backgroundColor = .white
-        tableView.register(AlbumsTableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
+    private var albumsView: AlbumsView = {
+        AlbumsView()
     }()
     
     private let searchController = UISearchController(searchResultsController: nil)
@@ -24,21 +20,23 @@ class AlbumsViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViews()
+        configureViewController()
         setupDelegate()
-        setupConstraints()
         setupNavigationBar()
         setupSearchController()
     }
     
-    private func setupViews() {
-        view.backgroundColor = .white
-        view.addSubview(tableView)
+    override func loadView() {
+        self.view = albumsView
+    }
+    
+    private func configureViewController() {
+        self.view.backgroundColor = .white
     }
     
     private func setupDelegate() {
-        tableView.delegate = self
-        tableView.dataSource = self
+        albumsView.tableView.delegate = self
+        albumsView.tableView.dataSource = self
         searchController.searchBar.delegate = self
     }
     
@@ -71,7 +69,7 @@ class AlbumsViewController: UIViewController {
                         return firstItem.collectionName.compare(secondItem.collectionName) == ComparisonResult.orderedAscending
                     }
                     self?.albums = sortedAlbums
-                    self?.tableView.reloadData()
+                    self?.albumsView.tableView.reloadData()
                 } else {
                     self?.alert(title: "Error", message: "Album not found. Add some words.")
                 }
@@ -124,18 +122,5 @@ extension AlbumsViewController: UISearchBarDelegate {
                 self?.fetchAlbums(albumName: text!)
             })
         }
-    }
-}
-
-// MARK: - SetupConstraints {
-extension AlbumsViewController {
-    
-    private func setupConstraints() {        
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
-        ])
     }
 }
