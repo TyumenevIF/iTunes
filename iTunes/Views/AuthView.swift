@@ -77,7 +77,7 @@ class AuthView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViews() {
+    private func setupViews() {
         textFieldsStackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField],
                                           axis: .vertical,
                                           spacing: 10,

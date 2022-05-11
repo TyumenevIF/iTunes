@@ -59,6 +59,13 @@ class SignUpView: UIView {
         return label
     }()
     
+    private(set) lazy var datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .compact
+        return datePicker
+    }()
+    
     private(set) lazy var ageValidLabel: UILabel = {
         let label = UILabel()
         label.text = "Required field"
@@ -125,7 +132,6 @@ class SignUpView: UIView {
     }()
     
     var elementsStackView = UIStackView()
-    let datePicker = UIDatePicker()
 
     // MARK: - Init
     override init(frame: CGRect) {
@@ -137,7 +143,7 @@ class SignUpView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViews() {
+    private func setupViews() {
         addSubview(scrollView)
         scrollView.addSubview(backgroundView)
         elementsStackView = UIStackView(arrangedSubviews: [firstNameTextField,

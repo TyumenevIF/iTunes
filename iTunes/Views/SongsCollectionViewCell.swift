@@ -8,26 +8,27 @@
 import UIKit
 
 class SongsCollectionViewCell: UICollectionViewCell {
-    
+
     let nameSongLabel: UILabel = {
         let label = UILabel()
         label.text = "Song name"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
+    // MARK: - Init
     override init(frame: CGRect) {
-        super.init(frame: frame)        
-        setupConstraints()
+        super.init(frame: frame)
+        setupViews()
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder) has not been implemented")
     }
-    
-    func setupConstraints() {
+
+    private func setupViews() {
         self.addSubview(nameSongLabel)
-        
+
         NSLayoutConstraint.activate([
             nameSongLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
             nameSongLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
